@@ -45,7 +45,7 @@ function setup() {
     t = new TimeDisplay();
     d = new DateDisplay();
     currentWeather = new Weather(currentWeatherData);
-    nextEvent = new Event("Next Event");
+    nextEvent = new Event("Agenda");
 }
 
 function draw() {

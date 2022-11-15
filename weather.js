@@ -13,13 +13,15 @@ class Weather {
         this.clearweather = createImg("assets/clear.png");
         this.snow;
         this.iconURL = '';
+        this.colorBright = 16;
+        this.colorDark = 255;
     }
 
     update() {
         this.cityName = this.weatherData.name;
         this.weather = this.weatherData.weather[0].main;
         this.temp = (int)(this.weatherData.main.temp);
-        this.iconURL = "http://openweathermap.org/img/wn/" + this.weatherData.weather[0].icon + "@4x.png";
+        this.iconURL = "http://openweathermap.org/img/wn/" + this.weatherData.weather[0].icon + "@2x.png";
         this.icon = createImg(this.iconURL);
         console.log(this.iconURL);
     }
@@ -28,19 +30,20 @@ class Weather {
 
     display(x, y) {
         push();
-        fill(255);
+        fill(this.colorBright);
         noStroke();
-        textSize(32);
+        textSize(28);
         
         //text(this.weather, 100, 300);
         imageMode(CENTER);
-        image(this.icon, x, y, 140, 140);
+        image(this.icon, x, y, 96, 96);
         //translate(64, 0);
-        textAlign(LEFT, BOTTOM);
+        textAlign(LEFT, BASELINE);
         text(this.temp + "℉", x + 48, y);
-        textSize(20);
-        textAlign(LEFT, BOTTOM);
-        text(this.cityName, x + 48, y + 32);
+        textSize(16);
+        textAlign(LEFT, TOP);
+        text(this.cityName, x + 48, y + 8);
+        //filter(INVERT);
         pop();
 
     }

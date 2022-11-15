@@ -5,19 +5,24 @@ class Event {
         this.w = 256;
         this.h = 32;
         this.title = title;
-        this.tSize = 14;
+        this.tSize = 16;
+        this.colorBright = 16;
+        this.colorDark = 255;
     }
 
     display(x, y) {
-        fill(255, 255, 255, 85);
+        this.color = this.colorBright;
+        fill(0 + this.color, 0 + this.color, 0 + this.color, 90);
         rectMode(CORNER);
         rect(x, y, this.w, this.h);
         textSize(this.tSize);
         textAlign(LEFT, CENTER);
-        fill(96);
+        fill(255 - this.color);
         text(this.title, x + 5, y + this.h / 2);
-        fill(255);
+        fill(0 + this.color);
         text("11:00 am\t|\tHuman interactive Design",x + 5, y + this.h/2 + 32);
+        text("12:00 pm\t|\tLunch with Mom",x + 5, y + this.h/2 + 32*2);
+        text("3:00 pm \t|\tGroup meeting",x + 5, y + this.h/2 + 32*3);
 
 
     }

@@ -5,7 +5,8 @@ class TimeDisplay {
         this.mm = minute();
         this.ss = second();
         this.isOn = false;
-        this.fade = 0;
+        this.colorBright = 16;
+        this.colorDark = 255;
     }
 
     update() {
@@ -30,7 +31,7 @@ class TimeDisplay {
             ap = "pm";
         }
         push();
-        fill(255);
+        fill(this.colorBright);
         noStroke();
         translate(x, y);
         textSize(48);

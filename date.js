@@ -4,6 +4,8 @@ class DateDisplay {
         this.m = month();
         this.d = day();
         this.y = year();
+        this.colorBright = 16;
+        this.colorDark = 255;
     }
 
     update() {
@@ -72,7 +74,7 @@ class DateDisplay {
                 break;
         }
         push();
-        fill(255);
+        fill(this.colorBright);
         noStroke();
         translate(x, y);
         textSize(28);
