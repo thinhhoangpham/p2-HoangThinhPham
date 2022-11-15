@@ -3,7 +3,7 @@ let capture, flippedCapture;
 let w, h;
 let scl;
 let hr, mn, dd, mm;
-let t, d, currentWeather;
+let t, d, currentWeather, nextEvent;
 let faceapi;
 let detections = [];
 let detectUpdate;
@@ -45,6 +45,7 @@ function setup() {
     t = new TimeDisplay();
     d = new DateDisplay();
     currentWeather = new Weather(currentWeatherData);
+    nextEvent = new Event("Next Event");
 }
 
 function draw() {
@@ -69,13 +70,11 @@ function draw() {
     
 
     // look for face and draw UI
-    // if (detectUpdate > 0) {
-    //     fill(255);
-    //     noStroke();
-    //     d.display(w/2 - capture.width * scl / 2, 5);
-    //     t.display(0, 32);
-    //     currentWeather.display();
-    // }
+    if (detectUpdate > 0) {
+        fill(255);
+        noStroke();
+        nextEvent.display(14, 256);
+    }
   
 }
 
