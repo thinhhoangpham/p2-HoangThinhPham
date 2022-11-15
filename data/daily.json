@@ -1,0 +1,44 @@
+{
+    "coord": {
+      "lon": -101.8338,
+      "lat": 33.6001
+    },
+    "weather": [
+      {
+        "id": 801,
+        "main": "Clouds",
+        "description": "few clouds",
+        "icon": "02d"
+      }
+    ],
+    "base": "stations",
+    "main": {
+      "temp": 37.35,
+      "feels_like": 27.1,
+      "temp_min": 37.15,
+      "temp_max": 39.38,
+      "pressure": 1019,
+      "humidity": 56
+    },
+    "visibility": 10000,
+    "wind": {
+      "speed": 19.57,
+      "deg": 350,
+      "gust": 32.21
+    },
+    "clouds": {
+      "all": 20
+    },
+    "dt": 1668463367,
+    "sys": {
+      "type": 2,
+      "id": 2013284,
+      "country": "US",
+      "sunrise": 1668431899,
+      "sunset": 1668469528
+    },
+    "timezone": -21600,
+    "id": 5525584,
+    "name": "Lubbock",
+    "cod": 200
+  }

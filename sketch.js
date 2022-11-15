@@ -1,0 +1,109 @@
+//Variables
+let capture, flippedCapture;
+let w = screen.width;
+let h = screen.height;
+let scl;
+let hr, mn, dd, mm;
+let t, d, currentWeather;
+let faceapi;
+let detections = [];
+let detectUpdate;
+let font;
+let currentWeatherData;
+
+function preload() {
+    currentWeatherData = loadJSON('https://api.openweathermap.org/data/2.5/weather?q=Lubbock&appid=ad6e239ec0ac58d0a9836e942aac97eb&units=imperial');
+}
+
+function setup() {
+    //Frame setup
+    frameRate(30);
+    createCanvas(screen.width, screen.height);
+    capture = createCapture(VIDEO);
+    capture.size(640, 480);
+    scl = screen.height/capture.height;
+    //scl = 1;
+    console.log(scl);
+    console.log(capture.width);
+    console.log(capture.height);
+    capture.hide();
+
+
+    // Only need landmarks for this example
+    const faceOptions = { 
+        withLandmarks: true, 
+        withExpressions: false, 
+        withDescriptors: false,
+        minConfidence: 0.5,
+    };
+    faceapi = ml5.faceApi(capture, faceOptions, faceReady);
+
+    t = new TimeDisplay();
+    d = new DateDisplay();
+    currentWeather = new Weather(currentWeatherData);
+}
+
+function draw() {
+    //Frame display
+    frameRate(30);
+    background(32);
+    push();
+    scale(-1, 1);
+    imageMode(CENTER);
+    image(capture, -w/2, h/2, capture.width * scl, capture.height * scl);
+    //drawBoxs(detections);
+    pop();
+
+    dataUpdate();
+
+    // Draw UI
+    fill(255);
+    noStroke();
+    d.display(w/2 - capture.width * scl / 2, 5);
+    t.display(0, 32);
+    currentWeather.display();
+    
+
+    // look for face and draw UI
+    // if (detectUpdate > 0) {
+    //     fill(255);
+    //     noStroke();
+    //     d.display(w/2 - capture.width * scl / 2, 5);
+    //     t.display(0, 32);
+    //     currentWeather.display();
+    // }
+  
+}
+
+async function dataUpdate() {
+    t.update();
+    d.update();
+    currentWeather.update();
+    detectUpdate = detections.length;
+}
+
+// Start detecting faces
+function faceReady() {
+    faceapi.detect(gotFaces);
+}
+// Got faces
+function gotFaces(error, result) {
+    if (error) {
+      console.log(error);
+      return;
+    }
+    detections = result;
+    faceapi.detect(gotFaces);
+} 
+
+function drawBoxs(detections){
+    if (detections.length > 0) {//If at least 1 face is detected: もし1つ以上の顔が検知されていたら
+      for (f=0; f < detections.length; f++){
+        let {_x, _y, _width, _height} = detections[f].alignedRect._box;
+        stroke(44, 169, 225);
+        strokeWeight(3);
+        fill(44, 169, 225);
+        rect(_x, _y, _width, _height);
+      }
+    }
+  }
