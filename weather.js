@@ -37,10 +37,10 @@ class Weather {
         image(this.icon, x, y, 140, 140);
         //translate(64, 0);
         textAlign(LEFT, BOTTOM);
-        text(this.temp + "℉", x + 42, y);
+        text(this.temp + "℉", x + 48, y);
         textSize(20);
         textAlign(LEFT, BASELINE);
-        text(this.cityName, x + 42, y + 32);
+        text(this.cityName, x + 48, y + 32);
         pop();
 
     }
