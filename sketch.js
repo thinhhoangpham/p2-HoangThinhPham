@@ -4,6 +4,7 @@ let w, h;
 let scl;
 let hr, mn, dd, mm;
 let t, d, currentWeather, nextEvent;
+let walk;
 let faceapi;
 let detections = [];
 let detectUpdate;
@@ -46,6 +47,10 @@ function setup() {
     d = new DateDisplay();
     currentWeather = new Weather(currentWeatherData);
     nextEvent = new Event("Agenda");
+
+    walk = new CircleChart(w - 256, 256, 50, 4220, 7000, "steps");
+    sleep = new CircleChart(w - 256, 256 + 96, 50, 6, 8, "hrs");
+    burn = new CircleChart(w - 256, 256 + 96*2, 50, 62, 120, "cal");
 }
 
 function draw() {
@@ -67,13 +72,18 @@ function draw() {
     d.display(14, 5);
     t.display(14, 32);
     currentWeather.display(capture.width * scl - 135, 42);
+    //Needs face detect condition:
+    walk.display();
+    sleep.display();
+    burn.display();
+    nextEvent.display(14, 256);
     
 
     // look for face and draw UI
     if (detectUpdate > 0) {
         fill(255);
         noStroke();
-        nextEvent.display(14, 256);
+        
     }
   
 }
@@ -83,6 +93,9 @@ async function dataUpdate() {
     d.update();
     currentWeather.update();
     detectUpdate = detections.length;
+    walk.update();
+    sleep.update();
+    burn.update();
 }
 
 // Start detecting faces

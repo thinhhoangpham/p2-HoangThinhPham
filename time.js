@@ -31,7 +31,7 @@ class TimeDisplay {
             ap = "pm";
         }
         push();
-        fill(this.colorBright);
+        fill(this.colorDark);
         noStroke();
         translate(x, y);
         textSize(48);

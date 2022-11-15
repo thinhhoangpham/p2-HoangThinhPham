@@ -74,7 +74,7 @@ class DateDisplay {
                 break;
         }
         push();
-        fill(this.colorBright);
+        fill(this.colorDark);
         noStroke();
         translate(x, y);
         textSize(28);

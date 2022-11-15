@@ -30,7 +30,7 @@ class Weather {
 
     display(x, y) {
         push();
-        fill(this.colorBright);
+        fill(this.colorDark);
         noStroke();
         textSize(28);
         
