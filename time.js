@@ -29,11 +29,12 @@ class TimeDisplay {
             hf = this.hh;
             ap = "pm";
         }
-
+        push();
         fill(255, 255, 255, this.fade);
         noStroke();
         translate(x, y);
         textSize(56);
+        textAlign(LEFT, TOP);
         text(nf(hf, 2, 0) + ":" + nf(this.mm, 2, 0) + " " + ap, 0, 0, 512, 512);
         if (this.fade<255) { 
             this.fade += 10;
@@ -42,6 +43,7 @@ class TimeDisplay {
             this.isOn = true;
         }
         //print(this.fade);
+        pop();
     }
 
 }

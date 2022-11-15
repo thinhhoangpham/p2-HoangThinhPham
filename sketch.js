@@ -1,7 +1,6 @@
 //Variables
 let capture, flippedCapture;
-let w = screen.width;
-let h = screen.height;
+let w, h;
 let scl;
 let hr, mn, dd, mm;
 let t, d, currentWeather;
@@ -13,20 +12,25 @@ let currentWeatherData;
 
 function preload() {
     currentWeatherData = loadJSON('https://api.openweathermap.org/data/2.5/weather?q=Lubbock&appid=ad6e239ec0ac58d0a9836e942aac97eb&units=imperial');
+    //currentWeatherData = loadJSON('https://github.com/thinhhoangpham/p2.HoangThinhPham/blob/main/data/daily.json');
 }
 
 function setup() {
     //Frame setup
     frameRate(30);
-    createCanvas(screen.width, screen.height);
+    //createCanvas(screen.width, screen.height);
     capture = createCapture(VIDEO);
     capture.size(640, 480);
     scl = screen.height/capture.height;
+    var canvas = createCanvas(capture.width * scl, capture.height * scl);
+    w = capture.width * scl;
+    h = capture.height * scl;
     //scl = 1;
     console.log(scl);
     console.log(capture.width);
     console.log(capture.height);
     capture.hide();
+    canvas.center('horizontal');
 
 
     // Only need landmarks for this example
@@ -59,9 +63,9 @@ function draw() {
     // Draw UI
     fill(255);
     noStroke();
-    d.display(w/2 - capture.width * scl / 2, 5);
-    t.display(0, 32);
-    currentWeather.display();
+    d.display(14, 5);
+    t.display(14, 32);
+    currentWeather.display(capture.width * scl - 135, 42);
     
 
     // look for face and draw UI

@@ -9,28 +9,39 @@ class Weather {
         this.dayTemp = [];
         this.tenki = "";
         this.rain;
-        this.clouds;
-        this.clearweather = loadImage('assets/clear.png');
+        this.cloud = createImg('assets/cloud.png');
+        this.clearweather = createImg("assets/clear.png");
         this.snow;
+        this.iconURL = '';
     }
 
     update() {
         this.cityName = this.weatherData.name;
         this.weather = this.weatherData.weather[0].main;
         this.temp = (int)(this.weatherData.main.temp);
+        this.iconURL = "http://openweathermap.org/img/wn/" + this.weatherData.weather[0].icon + "@4x.png";
+        this.icon = createImg(this.iconURL);
+        console.log(this.iconURL);
     }
 
 
 
-    display() {
+    display(x, y) {
+        push();
         fill(255);
         noStroke();
         textSize(32);
-        text(this.cityName, 100, 100);
-        //translate(0, 32);
-        text(this.temp, 100, 200);
-        text(this.weather, 100, 300);
-        image(this.clearweather, 200, 300, 64, 64);
+        
+        //text(this.weather, 100, 300);
+        imageMode(CENTER);
+        image(this.icon, x, y, 140, 140);
+        //translate(64, 0);
+        textAlign(LEFT, BOTTOM);
+        text(this.temp + "℉", x + 42, y);
+        textSize(20);
+        textAlign(LEFT, BASELINE);
+        text(this.cityName, x + 42, y + 32);
+        pop();
 
     }
 }

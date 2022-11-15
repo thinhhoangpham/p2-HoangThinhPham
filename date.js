@@ -71,13 +71,14 @@ class DateDisplay {
                 df = this.d + "th";
                 break;
         }
-
+        push();
         fill(255);
         noStroke();
         translate(x, y);
         textSize(28);
+        textAlign(LEFT, TOP);
         text(mf + " " + df, 0, 0, 512, 512);
-
+        pop();
     }
 
 }
