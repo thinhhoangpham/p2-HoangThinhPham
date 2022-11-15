@@ -34,7 +34,7 @@ class Weather {
         
         //text(this.weather, 100, 300);
         imageMode(CENTER);
-        image(this.cloud, x, y, 140, 140);
+        image(this.icon, x, y, 140, 140);
         //translate(64, 0);
         textAlign(LEFT, BOTTOM);
         text(this.temp + "℉", x + 42, y);
