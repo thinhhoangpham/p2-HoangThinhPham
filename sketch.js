@@ -10,6 +10,7 @@ let detections = [];
 let detectUpdate;
 let font;
 let currentWeatherData;
+let timer = 0;
 
 function preload() {
     currentWeatherData = loadJSON('https://api.openweathermap.org/data/2.5/weather?q=Lubbock&appid=ad6e239ec0ac58d0a9836e942aac97eb&units=imperial');
@@ -49,7 +50,7 @@ function setup() {
     nextEvent = new Event("Agenda");
 
     walk = new CircleChart(w - 256, 306, 50, 4220, 7000, "steps", "assets/footprintswhite.png");
-    sleep = new CircleChart(w - 256, 306 + 72, 50, 6, 8, "hrs", "assets/bedwhite.png");
+    sleep = new CircleChart(w - 256, 306 + 72, 50, 6, 8, "hrs", "assets/bed2white.png");
     burn = new CircleChart(w - 256, 306 + 72*2, 50, 62, 120, "cal", "assets/firewhite.png");
 }
 
@@ -73,22 +74,35 @@ function draw() {
     t.display(14, 32);
     currentWeather.display(capture.width * scl - 135, 42);
     //Needs face detect condition:
-    push();
-    textSize(18);
-    fill(255);
-    textAlign(LEFT, CENTER);
-    text("Archievements", w - 256 - 25, 256);
-    walk.display();
-    sleep.display();
-    burn.display();
-    nextEvent.display(14, 256);
-    
+    // push();
+    // textSize(18);
+    // fill(255);
+    // textAlign(LEFT, CENTER);
+    // text("Archievements", w - 256 - 25, 256);
+    // walk.display();
+    // sleep.display();
+    // burn.display();
+    // nextEvent.display(14, 256);
+    // pop();
 
     // look for face and draw UI
     if (detectUpdate > 0) {
+        timer = 3;
+    }
+    if (timer > 0) {
+        if (frameCount % 30 === 0) {
+            timer--;
+        }
+        push();
+        textSize(18);
         fill(255);
-        noStroke();
-        
+        textAlign(LEFT, CENTER);
+        text("Archievements", w - 256 - 25, 256);
+        walk.display();
+        sleep.display();
+        burn.display();
+        nextEvent.display(14, 256);
+        pop();
     }
   
 }
