@@ -48,9 +48,9 @@ function setup() {
     currentWeather = new Weather(currentWeatherData);
     nextEvent = new Event("Agenda");
 
-    walk = new CircleChart(w - 256, 256, 50, 4220, 7000, "steps");
-    sleep = new CircleChart(w - 256, 256 + 96, 50, 6, 8, "hrs");
-    burn = new CircleChart(w - 256, 256 + 96*2, 50, 62, 120, "cal");
+    walk = new CircleChart(w - 256, 306, 50, 4220, 7000, "steps", "assets/footprintswhite.png");
+    sleep = new CircleChart(w - 256, 306 + 72, 50, 6, 8, "hrs", "assets/bedwhite.png");
+    burn = new CircleChart(w - 256, 306 + 72*2, 50, 62, 120, "cal", "assets/firewhite.png");
 }
 
 function draw() {
@@ -73,6 +73,11 @@ function draw() {
     t.display(14, 32);
     currentWeather.display(capture.width * scl - 135, 42);
     //Needs face detect condition:
+    push();
+    textSize(18);
+    fill(255);
+    textAlign(LEFT, CENTER);
+    text("Archievements", w - 256 - 25, 256);
     walk.display();
     sleep.display();
     burn.display();

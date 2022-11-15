@@ -8,7 +8,7 @@ class CircleChart {
         this.d1 = d1;
         this.d2 = d2;
         this.unit = unit;
-        this.icon = createImg('assets/bed.png');
+        this.icon = createImg(icon);
         this.end = d1 / d2;
         this.start = 0;
     }
@@ -20,7 +20,7 @@ class CircleChart {
     display() {
         push();
         imageMode(CENTER);
-        image(this.icon, this.x, this.y, 32, 32);
+        image(this.icon, this.x, this.y, 20, 20);
         angleMode(DEGREES);
         noFill();
         stroke(255);
@@ -34,7 +34,7 @@ class CircleChart {
         noStroke();
         textAlign(LEFT, CENTER);
         textSize(18);
-        text(this.d1 + "/" + this.d2 + " " + this.unit, this.x + this.dia - 10, this.y);
+        text(this.d1 + " / " + this.d2 + " " + this.unit, this.x + this.dia - 10, this.y);
         pop();
     }
 }
