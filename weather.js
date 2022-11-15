@@ -39,7 +39,7 @@ class Weather {
         textAlign(LEFT, BOTTOM);
         text(this.temp + "℉", x + 48, y);
         textSize(20);
-        textAlign(LEFT, BASELINE);
+        textAlign(LEFT, BOTTOM);
         text(this.cityName, x + 48, y + 32);
         pop();
 
