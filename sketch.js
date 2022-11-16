@@ -13,9 +13,10 @@ let currentWeatherData;
 let timer = 0;
 let lightButton = [];
 let lightMode = 0;
-let playlist, player;
+let playlist, player, song;
 let songs = [];
-let song;
+
+let walkTable, sleepTable, burnTable;
 
 let frame;
 
@@ -23,6 +24,10 @@ function preload() {
     currentWeatherData = loadJSON('https://api.openweathermap.org/data/2.5/weather?q=Lubbock&appid=ad6e239ec0ac58d0a9836e942aac97eb&units=imperial');
     //currentWeatherData = loadJSON('https://github.com/thinhhoangpham/p2.HoangThinhPham/blob/main/data/daily.json');
     // playlist = loadJSON('data/playlist.json');
+
+    walkTable = loadTable('data/walk.csv', 'csv');
+    sleepTable = loadTable('data/sleep.csv', 'csv');
+    burnTable = loadTable('data/burn.csv', 'csv');
     
     // song = loadSound('data/songs/Angel Share.mp3');
     // append(songs, song);
