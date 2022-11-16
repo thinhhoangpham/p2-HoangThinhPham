@@ -17,3 +17,6 @@ As a smart mirror, it shall provide more than just letting user see themselves. 
     + Due to privacy concerns, personal data like calendar and health report only appear when the mirror detect user face in fron of the mirror.
 
 ## Sketch
+![Alt text](https://github.com/thinhhoangpham/p2-HoangThinhPham/blob/main/report/sketch.png?raw=true)
+
+## Demo
