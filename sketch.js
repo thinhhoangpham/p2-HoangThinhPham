@@ -83,9 +83,9 @@ function setup() {
     sleep = new CircleChart(w - 256, 306 + 72, 50, 6, 8, "hrs", "assets/bed2white.png");
     burn = new CircleChart(w - 256, 306 + 72*2, 50, 62, 120, "cal", "assets/firewhite.png");
 
-    walkChart = new BarChart(w/2 - 250, 200, walkTable, 6000);
-    sleepChart = new BarChart(w/2 - 250, 400, sleepTable, 8);
-    burnChart = new BarChart(w/2 - 250, 600, burnTable, 140);
+    walkChart = new BarChart(w/2 - 250, 200, walkTable, 6000, "Walk activity past 7 days");
+    sleepChart = new BarChart(w/2 - 250, 400, sleepTable, 8, "Sleep activity past 7 days");
+    burnChart = new BarChart(w/2 - 250, 600, burnTable, 140, "Calories burned past 7 days");
 
     
 }
