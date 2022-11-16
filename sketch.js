@@ -4,13 +4,15 @@ let w, h;
 let scl;
 let hr, mn, dd, mm;
 let t, d, currentWeather, nextEvent;
-let walk;
+let walk, sleep, burn;
 let faceapi;
 let detections = [];
 let detectUpdate;
 let font;
 let currentWeatherData;
 let timer = 0;
+let lightButton = [];
+let lightMode = 0;
 
 function preload() {
     currentWeatherData = loadJSON('https://api.openweathermap.org/data/2.5/weather?q=Lubbock&appid=ad6e239ec0ac58d0a9836e942aac97eb&units=imperial');
@@ -44,6 +46,10 @@ function setup() {
     };
     faceapi = ml5.faceApi(capture, faceOptions, faceReady);
 
+    //append(lightButton, createImg('assets/lightoff.png'));
+    append(lightButton, createImg('assets/lightwhite.png'));
+    append(lightButton, createImg('assets/lightwarm.png'));
+
     t = new TimeDisplay();
     d = new DateDisplay();
     currentWeather = new Weather(currentWeatherData);
@@ -61,6 +67,13 @@ function draw() {
     push();
     scale(-1, 1);
     imageMode(CENTER);
+    console.log(lightButton.length);
+    if (lightMode === 1) {
+        tint(251, 210, 213);
+    }
+    else {
+        tint(255);
+    }
     image(capture, -w/2, h/2, capture.width * scl, capture.height * scl);
     //drawBoxs(detections);
     pop();
@@ -73,19 +86,12 @@ function draw() {
     d.display(14, 5);
     t.display(14, 32);
     currentWeather.display(capture.width * scl - 135, 42);
-    //Needs face detect condition:
-    // push();
-    // textSize(18);
-    // fill(255);
-    // textAlign(LEFT, CENTER);
-    // text("Archievements", w - 256 - 25, 256);
-    // walk.display();
-    // sleep.display();
-    // burn.display();
-    // nextEvent.display(14, 256);
-    // pop();
+    push();
+    imageMode(CENTER);
+    image(lightButton[lightMode], w/2, 64, 64, 64);
 
     // look for face and draw UI
+    // If face not dectected widthin 3s, UI disapears
     if (detectUpdate > 0) {
         timer = 3;
     }
@@ -105,6 +111,19 @@ function draw() {
         pop();
     }
   
+}
+
+function mouseClicked() {
+    let d = dist(mouseX, mouseY, w/2, 64);
+    if (d < 32) {
+        if (lightMode < 1) {
+            lightMode++;
+        }
+        else {
+            lightMode = 0;
+        }
+
+    }
 }
 
 async function dataUpdate() {

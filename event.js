@@ -2,7 +2,7 @@ class Event {
     constructor(title) {
         this.x = 0;
         this.y = 0;
-        this.w = 256;
+        this.w = 300;
         this.h = 32;
         this.title = title;
         this.tSize = 16;
@@ -20,7 +20,7 @@ class Event {
         fill(255 - this.color);
         text(this.title, x + 5, y + this.h / 2);
         fill(0 + this.color);
-        text("11:00 am\t\tHuman interactive Design",x + 5, y + this.h/2 + 32);
+        text("11:00 am\t\tHuman Computer Interaction",x + 5, y + this.h/2 + 32);
         text("12:00 pm\t\tLunch with Mom",x + 5, y + this.h/2 + 32*2);
         text("3:00 pm \t\tGroup meeting",x + 5, y + this.h/2 + 32*3);
 
