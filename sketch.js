@@ -17,6 +17,7 @@ let playlist, player, song;
 let songs = [];
 
 let walkTable, sleepTable, burnTable;
+let walkChart, sleepChart, burnChart;
 
 let frame;
 
@@ -81,7 +82,9 @@ function setup() {
     sleep = new CircleChart(w - 256, 306 + 72, 50, 6, 8, "hrs", "assets/bed2white.png");
     burn = new CircleChart(w - 256, 306 + 72*2, 50, 62, 120, "cal", "assets/firewhite.png");
 
-    
+    walkChart = new BarChart(w/2 - 250, 200, walkTable);
+    sleepChart = new BarChart(w/2 - 250, 400, sleepTable);
+    burnChart = new BarChart(w/2 - 250, 600, burnTable);
 
     
 }
@@ -135,12 +138,16 @@ function draw() {
         burn.display();
         nextEvent.display(14, 256);
         // player.display();
+        walkChart.display();
+        sleepChart.display();
+        burnChart.display();
         pop();
     }
 
     // health charts frame
     push();
     noFill();
+    noStroke();
     stroke(255);
     rectMode(CORNERS);
     frame = rect(w - 256 - 32, 306 - 32, w, 306 + 72*2 + 32);
@@ -161,7 +168,7 @@ function mouseClicked() {
     }
 
     if ((mouseX > (w - 256 - 32) && mouseX < w) && (mouseY > (306 - 32) && mouseY < (306 + 72*2 + 32))) {
-        console.log("health data");
+        
     }
 }
 
