@@ -23,7 +23,7 @@ class Weather {
         this.temp = (int)(this.weatherData.main.temp);
         this.iconURL = "http://openweathermap.org/img/wn/" + this.weatherData.weather[0].icon + "@2x.png";
         this.icon = createImg(this.iconURL);
-        console.log(this.iconURL);
+        //console.log(this.iconURL);
     }
 
 

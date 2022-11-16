@@ -13,10 +13,23 @@ let currentWeatherData;
 let timer = 0;
 let lightButton = [];
 let lightMode = 0;
+let playlist, player;
+let songs = [];
+let song;
+
+let frame;
 
 function preload() {
     currentWeatherData = loadJSON('https://api.openweathermap.org/data/2.5/weather?q=Lubbock&appid=ad6e239ec0ac58d0a9836e942aac97eb&units=imperial');
     //currentWeatherData = loadJSON('https://github.com/thinhhoangpham/p2.HoangThinhPham/blob/main/data/daily.json');
+    // playlist = loadJSON('data/playlist.json');
+    
+    // song = loadSound('data/songs/Angel Share.mp3');
+    // append(songs, song);
+    // song = loadSound("data/songs/Inspired.mp3");
+    // append(songs, song);
+    // song = loadSound('data/songs/Fretless.mp3');
+    // append(songs, song);
 }
 
 function setup() {
@@ -50,6 +63,10 @@ function setup() {
     append(lightButton, createImg('assets/lightwhite.png'));
     append(lightButton, createImg('assets/lightwarm.png'));
 
+    // player = new MediaPlayer(playlist, songs);
+    
+    
+
     t = new TimeDisplay();
     d = new DateDisplay();
     currentWeather = new Weather(currentWeatherData);
@@ -58,6 +75,10 @@ function setup() {
     walk = new CircleChart(w - 256, 306, 50, 4220, 7000, "steps", "assets/footprintswhite.png");
     sleep = new CircleChart(w - 256, 306 + 72, 50, 6, 8, "hrs", "assets/bed2white.png");
     burn = new CircleChart(w - 256, 306 + 72*2, 50, 62, 120, "cal", "assets/firewhite.png");
+
+    
+
+    
 }
 
 function draw() {
@@ -108,8 +129,17 @@ function draw() {
         sleep.display();
         burn.display();
         nextEvent.display(14, 256);
+        // player.display();
         pop();
     }
+
+    // health charts frame
+    push();
+    noFill();
+    stroke(255);
+    rectMode(CORNERS);
+    frame = rect(w - 256 - 32, 306 - 32, w, 306 + 72*2 + 32);
+    pop();
   
 }
 
@@ -123,6 +153,10 @@ function mouseClicked() {
             lightMode = 0;
         }
 
+    }
+
+    if ((mouseX > (w - 256 - 32) && mouseX < w) && (mouseY > (306 - 32) && mouseY < (306 + 72*2 + 32))) {
+        console.log("health data");
     }
 }
 

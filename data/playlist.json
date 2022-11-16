@@ -1,0 +1,20 @@
+{
+    "playlist" : [
+    {
+        "name" : "Angel Share",
+        "artist" : "Kevin MacLeod",
+        "songFile" : "data/songs/Angel Share.mp3"
+    },
+    {
+        "name" : "Inspired",
+        "artist" : "Kevin MacLeod",
+        "songFile" : "data/songs/Inspired.mp3"
+    },
+    {
+        "name" : "Fretless",
+        "artist" : "Kevin MacLeod",
+        "songFile" : "data/songs/Fretless.mp3"
+    }
+    ]
+
+}
