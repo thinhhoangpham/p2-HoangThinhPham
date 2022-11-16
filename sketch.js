@@ -18,6 +18,7 @@ let songs = [];
 
 let walkTable, sleepTable, burnTable;
 let walkChart, sleepChart, burnChart;
+let healthDetail = false;
 
 let frame;
 
@@ -82,9 +83,9 @@ function setup() {
     sleep = new CircleChart(w - 256, 306 + 72, 50, 6, 8, "hrs", "assets/bed2white.png");
     burn = new CircleChart(w - 256, 306 + 72*2, 50, 62, 120, "cal", "assets/firewhite.png");
 
-    walkChart = new BarChart(w/2 - 250, 200, walkTable);
-    sleepChart = new BarChart(w/2 - 250, 400, sleepTable);
-    burnChart = new BarChart(w/2 - 250, 600, burnTable);
+    walkChart = new BarChart(w/2 - 250, 200, walkTable, 6000);
+    sleepChart = new BarChart(w/2 - 250, 400, sleepTable, 8);
+    burnChart = new BarChart(w/2 - 250, 600, burnTable, 140);
 
     
 }
@@ -129,18 +130,25 @@ function draw() {
             timer--;
         }
         push();
-        textSize(18);
-        fill(255);
-        textAlign(LEFT, CENTER);
-        text("Archievements", w - 256 - 25, 256);
-        walk.display();
-        sleep.display();
-        burn.display();
-        nextEvent.display(14, 256);
-        // player.display();
-        walkChart.display();
-        sleepChart.display();
-        burnChart.display();
+
+
+        if (healthDetail === false) {
+            textSize(18);
+            fill(255);
+            textAlign(LEFT, CENTER);
+            text("Archievements", w - 256 - 25, 256);
+            walk.display();
+            sleep.display();
+            burn.display();
+            nextEvent.display(14, 256);
+        }
+        else {
+            walkChart.display();
+            sleepChart.display();
+            burnChart.display();
+        }
+        
+        
         pop();
     }
 
@@ -150,7 +158,7 @@ function draw() {
     noStroke();
     stroke(255);
     rectMode(CORNERS);
-    frame = rect(w - 256 - 32, 306 - 32, w, 306 + 72*2 + 32);
+    //frame = rect(w - 256 - 32, 306 - 32, w, 306 + 72*2 + 32);
     pop();
   
 }
@@ -168,7 +176,7 @@ function mouseClicked() {
     }
 
     if ((mouseX > (w - 256 - 32) && mouseX < w) && (mouseY > (306 - 32) && mouseY < (306 + 72*2 + 32))) {
-        
+        healthDetail = !healthDetail;
     }
 }
 
