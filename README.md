@@ -20,3 +20,4 @@ As a smart mirror, it shall provide more than just letting user see themselves. 
 ![Alt text](https://github.com/thinhhoangpham/p2-HoangThinhPham/blob/main/report/sketch.png?raw=true)
 
 ## Demo
+Live demo at: https://thinhhoangpham.github.io/p2-HoangThinhPham/
